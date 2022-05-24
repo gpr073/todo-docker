@@ -1,6 +1,15 @@
 version : '3.8'
 services:
+  app:
+    container_name: todo-app
+    restart: unless-stopped
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - 'mongodb'
   mongodb:
+    container_name: mongodb
     image: mongo
     restart: unless-stopped
     ports:
@@ -12,8 +21,10 @@ services:
     image: mongo-express
     restart: unless-stopped
     ports:
-      - 8080:8081
+      - 8081:8081
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
       - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+      - 'mongodb'

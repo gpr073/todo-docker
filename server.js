@@ -6,7 +6,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended:true}));
 
-mongoose.connect('mongodb://admin:password@localhost:27017/todoDB?authSource=admin');
+mongoose.connect('mongodb://admin:password@mongodb:27017/todoDB?authSource=admin');
 
 const todosSchema = {
     todo: String
@@ -37,4 +37,6 @@ app.get("/delete/todo/:_id", (req, res) => {
     }).catch((err) => console.log(err));
 })
 
-app.listen(4000, () => console.log('Server is running'))
+const port = 3000
+
+app.listen(port, () => console.log('Server is running'))
