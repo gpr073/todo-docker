@@ -15,6 +15,7 @@ Containerized the TodoList web application using Docker.
 ### Executing program
 
 * Install Docker.
+* Execute docker-compose.yaml file.
 * The web application starts on port 3000.
 ```
 docker compose up -d
